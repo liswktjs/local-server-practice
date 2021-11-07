@@ -3,10 +3,18 @@
 ### node.js 익히기 위한 토이 프로젝트 웹 서버 만들기
 
 - 블로그 포스팅 서비스
+
   > > 1.  로컬 파일을 데이터 베이스로 사용 (JSON)
   > > 2.  인증 로직은 넣지 않는다
   > > 3.  RESTful API를 사용
 
+- Post(=블로그 글) 조건들
+
+> > GET /posts : 포스트 전체 글을 볼 때
+> > GET /posts/:id : 특정 id를 가진 포스트들만 보여줄 때
+> > POST /posts : 새로운 포스트를 작성할 떄
+
+<hr>
 ### 명령어 정리
 
 npm init -y : package.json 설치
@@ -80,7 +88,7 @@ formatting에는 주로 Prettier 사용 , Lintting에는 ESLint 사용
 
 [X] typescript 환경 설정
 
-[ ] API 라우팅 처리 HTTPie 이용한 테스팅
+[X] API 라우팅 처리 그리고 테스트
 
 자바스크립트의 경우 미리 데이터 자료형을 설정해 두지 않기 때문에 실행시 에러가 발생할 수 있다
 그렇기 때문에 타입스크립트를 활용하여 이 점을 보안한다

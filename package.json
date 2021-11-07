@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/liswktjs/local-server-practice#readme",
   "devDependencies": {
+    "@types/node": "^16.11.6",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
     "prettier": "^2.4.1"
@@ -25,6 +26,8 @@
   "dependencies": {
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-node": "^11.1.0"
+    "eslint-plugin-node": "^11.1.0",
+    "save-dev": "0.0.1-security",
+    "typescript": "^4.4.4"
   }
 }

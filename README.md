@@ -24,3 +24,11 @@ npm install --save-dev prettier : Prettier 설치
 }
 
 ```
+
+🔍 2021.11.07
+
+[ ] eslint 환경 설정
+
+[ ] typescript 환경 설정
+
+[ ] API 라우팅 처리 HTTPie 이용한 테스팅

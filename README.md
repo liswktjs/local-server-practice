@@ -126,8 +126,62 @@ formatting에는 주로 Prettier 사용 , Lintting에는 ESLint 사용
 
 [X] JSON 파일을 데이터베이스로 읽기 쓰기 기능 구현
 
-[ ] require 모듈
+[X] require 모듈 개념 정리
 
-[ ] npm, yarn 패키지 매니저 관리
+[X] npm, yarn 패키지 매니저 관리
 
-[ ] node.js 컨벤션
+[X] node.js 컨벤션
+
+#### require
+
+: 다른 js 파일에서 export한 모듈을 불러올 수 있다
+
+\*모듈이란? node.js에서는 각 파일 하나 하나가 모듈로 취급이 된다
+
+사용방법
+
+```
+//commonJS
+module.exports = animals // 다른 파일에서 추출
+
+require('./animals)
+
+//ECMA
+
+export default animals
+import animals from './animals.js"
+```
+
+- node_modules 폴더 안에 있는 파일들의 경우 require로 불러올 때 상대경로를 쓰지않고 절대 경로를 써도 불러 올 수 있다
+
+#### package.json
+
+: npm을 통해서 설치한 것들의 대략적인 내용이 들어가 있음
+
+package-lock.json 현재 설치되어 있는 것들의 정확한 버전 정보 등이 들어 가 있음 협업을 할때에 중요한 확인 사항이다
+
+- scripts: 유저가 설정하는 명령어 ,실행시에는 지정한 변수명을 npm run 변수명 에 넣어서 실행 시킨다
+
+#### yarn
+
+파일 설치 명령어 : yarn add 패키지이름
+
+파일 삭제 명령어 : yarn remove 패키지이름
+
+#### 컨벤션
+
+: 파일 이름, 글쓰는 방식, api를 어떻게 생성하는 지 등의 규칙
+
+- 파일이름 : 소문자로만 이루어져야 한다 / - \_ 기호를 넣을 수 있다
+  (export를 할때에 소문자와 대문자를 섞어서 사용할 때에 잠재적인 문제가 발생이 가능하다 )
+
+#### 노드의 데이터 구조
+
+- buffer : 고정된 길이의 byte sequence를 나타낼때 사용 /파일을 읽을 때 사용됨
+  사용예시
+
+```
+const buf = Buffer.from([97,98,99,100]) // abcd 의 dec 값
+```
+
+- stream

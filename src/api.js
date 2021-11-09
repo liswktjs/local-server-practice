@@ -7,20 +7,6 @@
  * @property {string} content
  */
 
-/** @type {Post[]} */
-const posts = [
-  {
-    id: 'my_first_post',
-    title: 'My frist post',
-    content: 'hello world',
-  },
-  {
-    id: 'my_second_post',
-    title: '나의 두번째 포스트',
-    content: 'hello world2',
-  },
-]
-
 /**
  * @typedef APIResponse
  * @property {number} statusCode
@@ -34,6 +20,26 @@ const posts = [
  * @property {(matches: string[], body: Object.<string, *> | undefined) => Promise<APIResponse>} callback
  */
 
+const fs = require('fs')
+const DB_JSON_FILENAME = 'database.json'
+
+/**@returns {Promise<Post[]>} */
+async function getPosts() {
+  const json = await fs.promises.readFile(DB_JSON_FILENAME, 'utf-8')
+  return JSON.parse(json).posts
+}
+
+// @ts-ignore
+async function savePosts(_p) {
+  const content = {
+    _p,
+  }
+  return fs.promises.writeFile(
+    DB_JSON_FILENAME,
+    JSON.stringify(content),
+    'utf-8'
+  )
+}
 /**@type {Route[]} */
 const routes = [
   //post 리스트 조회
@@ -42,7 +48,7 @@ const routes = [
     method: 'GET',
     callback: async () => ({
       statusCode: 200,
-      body: posts,
+      body: await getPosts(),
     }),
   },
   //특정 id 소유한 포스트 조회
@@ -57,6 +63,7 @@ const routes = [
           body: 'Not Found',
         }
       }
+      const posts = await getPosts()
       const post = posts.find((_post) => _post.id === postId)
 
       if (!post) {
@@ -90,7 +97,10 @@ const routes = [
         title,
         content: body.content,
       }
+
+      const posts = await getPosts()
       posts.push(newPost)
+      savePosts(posts)
       return {
         statusCode: 200,
         body: newPost,

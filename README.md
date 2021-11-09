@@ -124,7 +124,7 @@ formatting에는 주로 Prettier 사용 , Lintting에는 ESLint 사용
 
 🎨 2021.11.09
 
-[ ] JSON 파일을 데이터베이스로 활용하기
+[X] JSON 파일을 데이터베이스로 읽기 쓰기 기능 구현
 
 [ ] require 모듈
 

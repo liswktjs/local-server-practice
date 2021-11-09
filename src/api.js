@@ -29,10 +29,10 @@ async function getPosts() {
   return JSON.parse(json).posts
 }
 
-// @ts-ignore
-async function savePosts(_p) {
+/**@param {Post[]} posts */
+async function savePosts(posts) {
   const content = {
-    _p,
+    posts,
   }
   return fs.promises.writeFile(
     DB_JSON_FILENAME,
